@@ -153,7 +153,7 @@ Events are stored at:
 events/year=2026/month=03/day=30/hour=09/AAPL_20260330094256.json
 ```
 
-Partitioning by time allows Athena to use **partition pruning** — when you filter `WHERE year='2026' AND month='03'`, Athena only scans that partition rather than the entire dataset. This dramatically reduces query cost and latency at scale.
+Partitioning by time allows Athena to use **partition pruning**  when you filter `WHERE year='2026' AND month='03'`, Athena only scans that partition rather than the entire dataset. This dramatically reduces query cost and latency at scale.
 
 ### 4. Event-driven Architecture
 
@@ -161,15 +161,15 @@ The Lambda function is triggered automatically by Kinesis: there is no polling, 
 
 ### 5. Infrastructure as Code
 
-All AWS resources (Kinesis stream, DynamoDB table, S3 bucket) are created programmatically via `infrastructure/setup.py` using boto3. This means the entire infrastructure can be torn down and rebuilt in under a minute — a key DevOps practice.
+All AWS resources (Kinesis stream, DynamoDB table, S3 bucket) are created programmatically via `infrastructure/setup.py` using boto3. This means the entire infrastructure can be torn down and rebuilt in under a minute
 
 ---
 
 ## Analytical Insights
 
-From a 5-minute simulation run:
+From a 5 minute simulation run:
 
-- **765 total events** — 153 per ticker
+- **765 total events**  153 per ticker
 - **MSFT** showed the highest price volatility ($36.39 range) due to its higher base price
 - **GOOGL** was the most stable ($6.41 range)
 - Volume was evenly distributed across tickers (~720K-825K total per ticker)
